@@ -40,6 +40,15 @@ Route::resource('photos', PhotoController::class)->only([ 'index', 'show'
 Route::resource('photos', PhotoController::class)->except([ 'create', 'store', 'update', 'destroy'
 ]);
 
+Route::get('/greeting', function () {
+    return view('hello', ['name' => 'Alodia Juan Feronika']);
+    });
+    
+Route::get('/greeting', function () {
+    return view('blog.hello', ['name' => 'Alodia Juan Feronika']);
+    });
+Route::get('/greeting', [WelcomeController::class, 'greeting']);
+
 
 
 
