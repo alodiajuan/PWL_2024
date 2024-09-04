@@ -8,6 +8,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SalesController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +32,6 @@ Route::get('/hello', [WelcomeController::class,'hello']);
 Route::get('/world', function () { return 'World';
 });
 
-Route::get('/', HomeController::class); // Home route
-Route::get('/about', AboutController::class); // About route
-Route::get('/articles/{id}', ArticleController::class); // Articles route
 
 Route::resource('photos', PhotoController::class);
 Route::resource('photos', PhotoController::class)->only([ 'index', 'show'
@@ -48,6 +48,18 @@ Route::get('/greeting', function () {
     return view('blog.hello', ['name' => 'Alodia Juan Feronika']);
     });
 Route::get('/greeting', [WelcomeController::class, 'greeting']);
+
+Route::get('/', [HomeController::class, 'index']);
+
+Route::prefix('category')->group(function () {
+    Route::get('food-beverage', [ProductController::class, 'foodBeverage']);
+    Route::get('beauty-health', [ProductController::class, 'beautyHealth']);
+    Route::get('home-care', [ProductController::class, 'homeCare']);
+    Route::get('baby-kid', [ProductController::class, 'babyKid']);
+});
+
+Route::get('user/{id}/name/{name}', [UserController::class, 'profile']);
+Route::get('sales', [SalesController::class, 'index']);
 
 
 

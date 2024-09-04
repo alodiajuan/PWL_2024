@@ -1,12 +1,12 @@
 <?php
+
 namespace App\Http\Controllers;
 
-class HomeController extends Controller
+class SalesController extends Controller
 {
     public function index()
     {
-        return view('home');
+        return view('sales.index');
     }
 }
 
-?>
