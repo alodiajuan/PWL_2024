@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 class ProductController extends Controller
 {
     public function foodBeverage()
@@ -24,4 +26,4 @@ class ProductController extends Controller
         return view('products.baby-kid');
     }
 }
-?>
+
